@@ -49,6 +49,24 @@
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		 <!-- Tests -->
+        	<dependency>
+            	<groupId>org.springframework.boot</groupId>
+           	 <artifactId>spring-boot-starter-test</artifactId>
+           	 <scope>test</scope>
+       		</dependency>
+
+        	<!-- Optional, for bootstrap -->
+        	<dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>3.3.7</version>
+        	</dependency>
+             <dependency>
+    	<groupId>org.jacoco</groupId> 
+    	<artifactId>jacoco-maven-plugin</artifactId>
+    	<version>0.8.6</version>
+	</dependency>
 	</dependencies>
 
 	<build>
@@ -57,7 +75,38 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>${jacoco.version}</version>
+    <executions>
+        <execution>
+            <id>jacoco-initialize</id>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>jacoco-site</id>
+            <phase>package</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
 		</plugins>
 	</build>
+	<distributionManagement>
+    <repository>
+      <id>maven-releases</id>
+      <name>maven-releases</name>
+      <url>http://3.108.254.192:8081/repository/maven-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>maven-snapshots</id>
+      <name>maven-snapshots</name>
+      <url>http://3.108.254.192:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
 
 </project>
